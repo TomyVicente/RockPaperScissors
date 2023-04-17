@@ -42,12 +42,30 @@ function playerSelectionCheck(){
     }
 }
 
+//Loops one round game to create a 
+function game(){
+    let winsPlayer =0;
+    let winsComputer = 0;
+    let rounds = 5;
+    for(i =0; i< rounds;i++){
+        if (oneRoundRPS(playerSelection,computerSelection.substring(0,10)== "You've won")){
+            winsPlayer++;
+        }else if(oneRoundRPS(playerSelection,computerSelection.substring(0,11)== "You've lost")){
+            winsComputer++;
+        }else if(oneRoundRPS(playerSelection,computerSelection.substring(0,10)== "It's a draw")){
+            rounds++;
+        }
+    }
+    if(winsPlayer > winsComputer){
+        console.log("You're god tier player of Rock , Paper and Scissors");
+    }else{
+        console.log("You lose against a computer :( .Try again until you win bro")
+    }
+}
+
 let playerSelection = playerSelectionCheck();
 console.log(playerSelection);
 
 let computerSelection = getComputerChoice();
 console.log(computerSelection);
 
-for(i =0; i< 5;i++){
-    console.log(oneRoundRPS(playerSelection,computerSelection));
-}
