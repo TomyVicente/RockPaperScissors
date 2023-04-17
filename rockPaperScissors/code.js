@@ -14,17 +14,17 @@ function oneRoundRPS(playerSelection, computerSelection){
     if (playerSelection == computerSelection){
         return(`It's a draw , you both pick ${playerSelection}`);
     }else if(playerSelection == "rock" && computerSelection == "scissors"){
-        return(`You've won. You picked ${playerSelection} and your rival picked ${computerSelection}`);
+        return(`You've won! ${playerSelection} beats ${computerSelection}`);
     }else if(playerSelection == "rock" && computerSelection == "paper"){
-        return(`You've lost. You picked ${playerSelection} and your rival picked ${computerSelection}`);
+        return(`You've lost! ${computerSelection} beats ${playerSelection}}`);
     }else if(playerSelection == "paper" && computerSelection == "rock"){
-        return(`You've won. You picked ${playerSelection} and your rival picked ${computerSelection}`);
+        return(`You've won! ${playerSelection} beats ${computerSelection}`);
     }else if(playerSelection == "paper" && computerSelection == "scissors"){
-        return(`You've lost. You picked ${playerSelection} and your rival picked ${computerSelection}`);
+        return(`You've lost! ${computerSelection} beats ${playerSelection}`);
     }else if(playerSelection == "scissors" && computerSelection == "rock"){
-        return(`You've lost. You picked ${playerSelection} and your rival picked ${computerSelection}`);
+        return(`You've lost! ${computerSelection} beats ${playerSelection}`);
     }else if(playerSelection == "scissors" && computerSelection == "paper"){
-        return(`You've won. You picked ${playerSelection} and your rival picked ${computerSelection}`);
+        return(`You've won! ${playerSelection} beats ${computerSelection}`);
     }
 }
 
@@ -48,4 +48,6 @@ console.log(playerSelection);
 let computerSelection = getComputerChoice();
 console.log(computerSelection);
 
-console.log(oneRoundRPS(playerSelection,computerSelection));
+for(i =0; i< 5;i++){
+    console.log(oneRoundRPS(playerSelection,computerSelection));
+}
