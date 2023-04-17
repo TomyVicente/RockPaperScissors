@@ -10,7 +10,13 @@ function getComputerChoice(){
     }
 }
 // Genera una ronda sabiendo las dos opciones , tanto de la computadora como del jugador
-function oneRoundRPS(playerSelection, computerSelection){
+function oneRoundRPS(){
+    let playerSelection = playerSelectionCheck();
+    console.log(playerSelection);
+
+    let computerSelection = getComputerChoice();
+    console.log(computerSelection);
+
     if (playerSelection == computerSelection){
         return(`It's a draw , you both pick ${playerSelection}`);
     }else if(playerSelection == "rock" && computerSelection == "scissors"){
@@ -48,24 +54,25 @@ function game(){
     let winsComputer = 0;
     let rounds = 5;
     for(i =0; i< rounds;i++){
-        if (oneRoundRPS(playerSelection,computerSelection.substring(0,10)== "You've won")){
+    let roundResult = oneRoundRPS();
+        if (roundResult.substring(0,10)== "You've won"){
+            console.log(roundResult);
             winsPlayer++;
-        }else if(oneRoundRPS(playerSelection,computerSelection.substring(0,11)== "You've lost")){
+        }else if(roundResult.substring(0,11)== "You've lost"){
+            console.log(roundResult);
             winsComputer++;
-        }else if(oneRoundRPS(playerSelection,computerSelection.substring(0,10)== "It's a draw")){
-            rounds++;
+        }else{
+            console.log(roundResult);
         }
     }
     if(winsPlayer > winsComputer){
         console.log("You're god tier player of Rock , Paper and Scissors");
-    }else{
+    }else if (winsComputer > winsPlayer){
         console.log("You lose against a computer :( .Try again until you win bro")
+    }else {
+        console.log("It's a draw")
     }
 }
 
-let playerSelection = playerSelectionCheck();
-console.log(playerSelection);
 
-let computerSelection = getComputerChoice();
-console.log(computerSelection);
-
+game();
