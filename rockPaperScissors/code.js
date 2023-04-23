@@ -10,19 +10,14 @@ function getComputerChoice(){
     }
 }
 // Genera una ronda sabiendo las dos opciones , tanto de la computadora como del jugador
-function oneRoundRPS(){
-    let playerSelection = playerSelectionCheck();
-    console.log(playerSelection);
-
-    let computerSelection = getComputerChoice();
-    console.log(computerSelection);
+function oneRoundRPS(playerSelection ,computerSelection){
 
     if (playerSelection == computerSelection){
         return(`It's a draw , you both pick ${playerSelection}`);
     }else if(playerSelection == "rock" && computerSelection == "scissors"){
         return(`You've won! ${playerSelection} beats ${computerSelection}`);
     }else if(playerSelection == "rock" && computerSelection == "paper"){
-        return(`You've lost! ${computerSelection} beats ${playerSelection}}`);
+        return(`You've lost! ${computerSelection} beats ${playerSelection}`);
     }else if(playerSelection == "paper" && computerSelection == "rock"){
         return(`You've won! ${playerSelection} beats ${computerSelection}`);
     }else if(playerSelection == "paper" && computerSelection == "scissors"){
@@ -35,6 +30,7 @@ function oneRoundRPS(){
 }
 
 //Chequea que el input del usuario este dentro del programa
+/*
 function playerSelectionCheck(){
     let playerOption = prompt("Enter if you want to choose rock,paper or scissors");
     if (playerOption == "rock" || playerOption == "paper" || playerOption == "scissors"){
@@ -47,9 +43,11 @@ function playerSelectionCheck(){
         return playerOption;
     }
 }
+*/
 
 //Loops one round game to create a 
 function game(){
+    /*
     let winsPlayer =0;
     let winsComputer = 0;
     let rounds = 5;
@@ -72,7 +70,26 @@ function game(){
     }else {
         console.log("It's a draw")
     }
+    */
 }
 
 
-game();
+//Crear Listener en los tres botones 
+const but = document.querySelectorAll('button');
+for(let i=0;i<but.length;i++){
+but[i].addEventListener('click',(e) =>{
+    let div =document.querySelector('div');
+    let p = document.createElement('p');
+    if(e.target.innerText == '✂️'){
+       p.textContent = oneRoundRPS("scissors",getComputerChoice());
+       div.appendChild(p);
+    }else if(e.target.innerText == '📄'){
+        p.textContent = oneRoundRPS("paper",getComputerChoice());
+        div.appendChild(p);
+    }
+    else if(e.target.innerText == '🪨'){
+        p.textContent = oneRoundRPS("rock",getComputerChoice());
+       div.appendChild(p);
+    }
+});
+}

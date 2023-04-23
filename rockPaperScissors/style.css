@@ -1,0 +1,22 @@
+*{
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+    height: 300px;
+    width: 300px;
+    font-size: 100px;
+}
+
+.main-content{
+    text-align: center;
+    font-size: 40px;
+}
