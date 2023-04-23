@@ -76,20 +76,20 @@ function game(){
 
 //Crear Listener en los tres botones 
 const but = document.querySelectorAll('button');
+let div = document.createElement('div');
+div.className = ("results");
+let p = document.createElement('p');
+div.appendChild(p);
+document.body.appendChild(div);
 for(let i=0;i<but.length;i++){
 but[i].addEventListener('click',(e) =>{
-    let div =document.querySelector('div');
-    let p = document.createElement('p');
     if(e.target.innerText == '✂️'){
        p.textContent = oneRoundRPS("scissors",getComputerChoice());
-       div.appendChild(p);
     }else if(e.target.innerText == '📄'){
         p.textContent = oneRoundRPS("paper",getComputerChoice());
-        div.appendChild(p);
     }
     else if(e.target.innerText == '🪨'){
         p.textContent = oneRoundRPS("rock",getComputerChoice());
-       div.appendChild(p);
     }
 });
 }

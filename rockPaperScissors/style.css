@@ -1,22 +1,29 @@
 *{
-    font-family: sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #fff;
+    background-color: #000;
 }
 
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
 }
 
 button{
     align-items: center;
     justify-content: center;
-    margin-right: 30px;
+    margin-right: 50px;
     height: 300px;
     width: 300px;
     font-size: 100px;
+    border-radius: 50px;
 }
 
-.main-content{
-    text-align: center;
-    font-size: 40px;
+.buttons{
+    display: flex;
+    justify-content: space-between; 
 }
