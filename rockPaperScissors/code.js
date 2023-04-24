@@ -27,6 +27,7 @@ function oneRoundRPS(playerSelection ,computerSelection){
     }else if(playerSelection == "scissors" && computerSelection == "paper"){
         return(`You've won! ${playerSelection} beats ${computerSelection}`);
     }
+
 }
 
 //Chequea que el input del usuario este dentro del programa
@@ -50,8 +51,8 @@ function game(){
     /*
     let winsPlayer =0;
     let winsComputer = 0;
-    let rounds = 5;
-    for(i =0; i< rounds;i++){
+
+    do{
     let roundResult = oneRoundRPS();
         if (roundResult.substring(0,10)== "You've won"){
             console.log(roundResult);
@@ -62,7 +63,8 @@ function game(){
         }else{
             console.log(roundResult);
         }
-    }
+    }while(winsPlayer < 5 || winsComputer < 5)
+
     if(winsPlayer > winsComputer){
         console.log("You're god tier player of Rock , Paper and Scissors");
     }else if (winsComputer > winsPlayer){
@@ -75,21 +77,52 @@ function game(){
 
 
 //Crear Listener en los tres botones 
-const but = document.querySelectorAll('button');
-let div = document.createElement('div');
-div.className = ("results");
-let p = document.createElement('p');
-div.appendChild(p);
-document.body.appendChild(div);
-for(let i=0;i<but.length;i++){
-but[i].addEventListener('click',(e) =>{
-    if(e.target.innerText == '✂️'){
-       p.textContent = oneRoundRPS("scissors",getComputerChoice());
-    }else if(e.target.innerText == '📄'){
-        p.textContent = oneRoundRPS("paper",getComputerChoice());
+function oneRoundOnUi(){
+    //Creando las variables para el DOM
+    const but = document.querySelectorAll('button');
+    let div = document.createElement('div');
+    div.className = ("results");
+    let p = document.createElement('p');
+    let scores  = document.createElement('p');
+    div.appendChild(p);
+    div.appendChild(scores);
+    document.body.appendChild(div);
+    let winsPlayer = 0,winsComputer =0;
+    for(let i=0;i<but.length;i++){ 
+    but[i].addEventListener('click',(e) =>{
+        if(winsPlayer < 5 && winsComputer < 5){
+            if(e.target.innerText == '✂️'){
+                p.textContent = oneRoundRPS("scissors",getComputerChoice());  
+                if(p.textContent.includes("You've won")){
+                    winsPlayer++;
+                }else if(p.textContent.includes("You've lost")){
+                    winsComputer++;
+                }     
+            }else if(e.target.innerText == '📄'){
+                p.textContent = oneRoundRPS("paper",getComputerChoice());
+                if(p.textContent.includes("You've won")){
+                    winsPlayer++;
+                }else if(p.textContent.includes("You've lost")){
+                    winsComputer++;
+                }
+            }
+            else if(e.target.innerText == '🪨'){
+                p.textContent = oneRoundRPS("rock",getComputerChoice());
+                if(p.textContent.includes("You've won")){
+                    winsPlayer++;
+                }else if(p.textContent.includes("You've lost")){
+                    winsComputer++;
+                }
+            }
+            scores.textContent = `Scores YOU: ${winsPlayer} COMPUTER ${winsComputer}` 
+        }else if(winsPlayer === 5){
+            scores.textContent =("You've won the game.You're the best player ever of this game!");
+        }else if(winsComputer === 5){
+            scores.textContent = ("You've lost the game.Try again next time!");
+        }
+    });
     }
-    else if(e.target.innerText == '🪨'){
-        p.textContent = oneRoundRPS("rock",getComputerChoice());
-    }
-});
 }
+
+oneRoundOnUi();
+

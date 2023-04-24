@@ -13,7 +13,7 @@ body{
     font-size: 40px;
 }
 
-button{
+.playableButton{
     align-items: center;
     justify-content: center;
     margin-right: 50px;
